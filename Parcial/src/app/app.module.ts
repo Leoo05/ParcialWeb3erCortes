@@ -3,13 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { ListEventsComponent } from './list-events/list-events.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+
+import { eventReducer } from './events.reducer';
+
+
+//NGRX
+import { StoreModule } from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
+import {appReducers} from './app.reducer';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateEventComponent,
+    ListEventsComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({event:eventReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     AppRoutingModule
   ],
   providers: [],
