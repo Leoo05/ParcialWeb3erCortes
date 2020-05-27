@@ -9,14 +9,13 @@ import { event } from '../models/event.model';
   styleUrls: ['./list-events.component.css']
 })
 export class ListEventsComponent implements OnInit {
-  events: event[] = [];
+  eventos:event[]=[];
 
   constructor(private store:Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.subscribe(events =>{
-      this.events=events;
+    this.store.subscribe(events =>{      
+      this.eventos=events.event;      
     });
   }
-
 }

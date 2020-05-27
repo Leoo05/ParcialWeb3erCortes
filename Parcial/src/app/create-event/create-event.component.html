@@ -1,1 +1,6 @@
-<p>create-event works!</p>
+<header class="header">
+    <h1>CREAR EVENTO</h1>
+    <input class="new-todo" placeholder="Nombre Evento" [formControl]="InputNombre" autofocus>
+    <input class="new-todo" placeholder="Descripcion" [formControl]="InputDescripcion" autofocus>
+    <input class="new-todo" placeholder="Estado" [formControl]="InputEstado" (keyup.enter)="createEvent()" autofocus>    
+</header>

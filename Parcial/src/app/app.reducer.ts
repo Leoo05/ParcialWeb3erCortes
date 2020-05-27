@@ -7,11 +7,11 @@ import {eventReducer} from './events.reducer';
 
 
 export interface AppState {
-  events: event[]
+  event: event[]
   //filter: filtersValid
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
-  events: eventReducer,
+  event: eventReducer
   //filter: filterReducer
 }
