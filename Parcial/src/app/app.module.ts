@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import {appReducers} from './app.reducer';
   imports: [
     BrowserModule,
     StoreModule.forRoot({event:eventReducer}),
+    ReactiveFormsModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
