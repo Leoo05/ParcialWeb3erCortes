@@ -1,6 +1,19 @@
 <header class="header">
-    <h1>CREAR EVENTO</h1>
-    <input class="new-todo" placeholder="Nombre Evento" [formControl]="InputNombre" autofocus>
-    <input class="new-todo" placeholder="Descripcion" [formControl]="InputDescripcion" autofocus>
-    <input class="new-todo" placeholder="Estado" [formControl]="InputEstado" (keyup.enter)="createEvent()" autofocus>    
+    <div>
+        <h1>CREAR EVENTO</h1>
+    </div>
+    <div>    
+        <input name="nombre" class="new-todo" placeholder="Nombre Evento" [formControl]="InputNombre" autofocus>
+        <input name="descripcion" class="new-todo" placeholder="Descripcion" [formControl]="InputDescripcion" autofocus>
+        <input name="estado" class="new-todo" placeholder="Estado" [formControl]="InputEstado" (keyup.enter)="createEvent()" autofocus>    
+    </div>
+    
+    <br><br>
+    
+    <div>
+        <button (click)="createEvent()">Crear Evento</button>
+    </div>
+
+    <br><br><br>
 </header>
+<hr>
