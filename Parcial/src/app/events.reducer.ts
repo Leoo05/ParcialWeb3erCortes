@@ -8,7 +8,6 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
 export const state: event[] = [
     new event('safe de word', 'salvemos al mundo', 'iniciado', 0),
 ];
-
 const _eventReducer = createReducer(state,
     on(actions.create, (state, { Nombre, Descripcion, Estado, Id }) => [...state, new event(Nombre, Descripcion, Estado, Id)]),
     on(actions.cambiar, (state, { Nombre, Descripcion, Estado, Id }) => {
