@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.reducer';
+import { FormControl, Validators } from '@angular/forms';
+import * as actions from '../events.actions';
+import { event } from '../models/event.model';
 
 @Component({
   selector: 'app-edit-event',
@@ -7,9 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditEventComponent implements OnInit {
 
-  constructor() { }
+  @Input() indice : number;
+  
+  InputNombre: FormControl;
+  InputDescripcion: FormControl;
+  InputEstado: FormControl;
+  index: number;
 
-  ngOnInit(): void {
+  constructor(private store: Store<AppState>) {
+    this.InputNombre = new FormControl('', Validators.required);
+    this.InputDescripcion = new FormControl('', Validators.required);
+    this.InputEstado = new FormControl('', Validators.required);
+  }
+
+  ngOnInit(): void {}
+
+  edit() {
+    let n = this.InputNombre.value;
+    let d = this.InputDescripcion.value;
+    let e = this.InputEstado.value;
+    this.store.dispatch(actions.cambiar({ Nombre: n, Descripcion: d, Estado: e, Id: this.indice }));
+    this.InputDescripcion.reset();
+    this.InputEstado.reset();
+    this.InputNombre.reset();
   }
 
 }
