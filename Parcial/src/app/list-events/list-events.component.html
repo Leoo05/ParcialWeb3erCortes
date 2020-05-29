@@ -1,10 +1,13 @@
-
-<div>
+  <h1>Eventos Creados</h1>
   <div *ngFor="let event of eventos">
     <p> <b> Nombre: </b> {{event.Nombre}}</p>
     <p> <b> Descripción: </b> {{event.Descripcion}}</p>
     <p> <b> Estado: </b> {{event.Estado}}</p>
+    <hr>
+    <b class="titulo">Modificar Evento</b><br>
+    <br>
     <app-edit-event [indice]="event.Id"></app-edit-event>
+    <br><br>
   </div>
-</div>
+
 

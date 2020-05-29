@@ -5,11 +5,13 @@ import { FormControl, Validators } from '@angular/forms';
 import * as actions from '../events.actions';
 import { event } from '../models/event.model';
 
+
 @Component({
   selector: 'app-edit-event',
   templateUrl: './edit-event.component.html',
   styleUrls: ['./edit-event.component.css']
 })
+
 export class EditEventComponent implements OnInit {
 
   @Input() indice : number;
@@ -23,6 +25,7 @@ export class EditEventComponent implements OnInit {
     this.InputNombre = new FormControl('', Validators.required);
     this.InputDescripcion = new FormControl('', Validators.required);
     this.InputEstado = new FormControl('', Validators.required);
+    
   }
 
   ngOnInit(): void {}
@@ -31,10 +34,17 @@ export class EditEventComponent implements OnInit {
     let n = this.InputNombre.value;
     let d = this.InputDescripcion.value;
     let e = this.InputEstado.value;
-    this.store.dispatch(actions.cambiar({ Nombre: n, Descripcion: d, Estado: e, Id: this.indice }));
-    this.InputDescripcion.reset();
-    this.InputEstado.reset();
-    this.InputNombre.reset();
+    if(n !="" || d !="" || e !="" ){
+      this.store.dispatch(actions.cambiar({ Nombre: n, Descripcion: d, Estado: e, Id: this.indice }));
+      this.InputDescripcion.reset();
+      this.InputEstado.reset();
+      this.InputNombre.reset();
+    }else{
+      console.log("asdasdasdasd");
+    }
+
   }
+
+ 
 
 }
