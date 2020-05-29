@@ -10,12 +10,14 @@ import { event } from '../models/event.model';
 })
 export class ListEventsComponent implements OnInit {
   eventos:event[]=[];
+  index:number
 
-  constructor(private store:Store<AppState>) { }
-
-  ngOnInit(): void {
-    this.store.subscribe(events =>{      
-      this.eventos=events.event;      
+  constructor(private store:Store<AppState>) {
+    this.store.subscribe(events =>{ 
+      this.eventos=events.event;
+      this.index = events.index;
     });
   }
+
+  ngOnInit(): void {}
 }

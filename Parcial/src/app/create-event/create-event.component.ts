@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {AppState} from '../app.reducer';
-import {FormControl, Validators} from '@angular/forms';
+import { AppState } from '../app.reducer';
+import { FormControl, Validators } from '@angular/forms';
 import * as actions from '../events.actions';
 
 
@@ -13,13 +13,18 @@ import * as actions from '../events.actions';
 export class CreateEventComponent implements OnInit {
 
 
-  InputNombre : FormControl;
-  InputDescripcion:FormControl;
-  InputEstado:FormControl;
-  constructor(private store: Store<AppState>) { 
+  InputNombre: FormControl;
+  InputDescripcion: FormControl;
+  InputEstado: FormControl;
+  Index: number;
+
+  constructor(private store: Store<AppState>) {
     this.InputNombre = new FormControl('', Validators.required);
     this.InputDescripcion = new FormControl('', Validators.required);
     this.InputEstado = new FormControl('', Validators.required);
+    this.store.subscribe (res => {
+      this.Index = res.index
+    });
   }
 
   ngOnInit(): void {
@@ -27,16 +32,18 @@ export class CreateEventComponent implements OnInit {
   }
 
 
-  createEvent(){
-    if(this.InputDescripcion.invalid||this.InputEstado.invalid||this.InputNombre.invalid){
+  createEvent() {
+    if (this.InputDescripcion.invalid || this.InputEstado.invalid || this.InputNombre.invalid) {
       return;
     }
-    else{
-    this.store.dispatch( actions.create({Nombre:this.InputNombre.value,Descripcion:this.InputDescripcion.value,Estado:this.InputEstado.value}));    
-    this.InputDescripcion.reset();
-    this.InputEstado.reset();
-    this.InputNombre.reset();
-    }    
+    else {
+      console.log(this.Index);
+      this.store.dispatch(actions.create({ Nombre: this.InputNombre.value, Descripcion: this.InputDescripcion.value, Estado: this.InputEstado.value , Id: this.Index}));
+      this.store.dispatch(actions.increment());
+      this.InputDescripcion.reset();
+      this.InputEstado.reset();
+      this.InputNombre.reset();
+    }
   }
 
 }
