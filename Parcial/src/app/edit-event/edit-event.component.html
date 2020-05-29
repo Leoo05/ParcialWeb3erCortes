@@ -1,1 +1,3 @@
-<p>edit-event works!</p>
+<input class="new-todo" placeholder="Nombre Evento" [formControl]="InputNombre" (keyup.enter)="edit()" autofocus>
+<input class="new-todo" placeholder="Descripcion" [formControl]="InputDescripcion" (keyup.enter)="edit()" autofocus>
+<input class="new-todo" placeholder="Estado" [formControl]="InputEstado" (keyup.enter)="edit()" autofocus>

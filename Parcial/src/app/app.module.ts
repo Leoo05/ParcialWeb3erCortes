@@ -9,13 +9,14 @@ import { ListEventsComponent } from './list-events/list-events.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 
 import { eventReducer } from './events.reducer';
+import { indexReducer } from './index.reducer';
 
 
 //NGRX
 import { StoreModule } from '@ngrx/store';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {environment} from '../environments/environment';
-import {appReducers} from './app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { appReducers } from './app.reducer';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {appReducers} from './app.reducer';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({event:eventReducer}),
+    StoreModule.forRoot(appReducers),
     ReactiveFormsModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
