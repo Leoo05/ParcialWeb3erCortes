@@ -1,7 +1,10 @@
-  <div *ngFor="let event of eventos"> 
-        <p> <b>  Nombre: </b>  {{event.Nombre}}</p>  
-        <p> <b>  Descripción: </b> {{event.Descripcion}}</p> 
-        <p>  <b>  Estado: </b> {{event.Estado}}</p>  
-    </div>
+
+<div>
+  <div *ngFor="let event of eventos">
+    <p> <b> Nombre: </b> {{event.Nombre}}</p>
+    <p> <b> Descripción: </b> {{event.Descripcion}}</p>
+    <p> <b> Estado: </b> {{event.Estado}}</p>
     <app-edit-event [indice]="event.Id"></app-edit-event>
+  </div>
 </div>
+
