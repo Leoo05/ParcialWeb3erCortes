@@ -1,4 +1,4 @@
 <input class="new-todo" placeholder="Nuevo nombre Evento" [formControl]="InputNombre" (keyup.enter)="edit()" autofocus ngModel required>
 <input class="new-todo" placeholder="Nueva descripcion" [formControl]="InputDescripcion" (keyup.enter)="edit()" autofocus ngModel required>
 <input class="new-todo" placeholder="Nuevo estado" [formControl]="InputEstado" (keyup.enter)="edit()" autofocus ngModel required>
-<button (click)="edit()">Modifica este evento!</button>
+<button (click)="edit()"ng-disabled="InputNombre.$invalid || InputDescripcion.$invalid || InputEstado.$invalid ">Modifica este evento!</button>

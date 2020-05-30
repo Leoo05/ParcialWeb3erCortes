@@ -2,16 +2,19 @@
     <div>
         <h1>CREAR EVENTO</h1>
     </div>
-    <div>    
-        <input name="nombre" class="new-todo" placeholder="Nombre Evento" [formControl]="InputNombre" autofocus ngModel required>
-        <input name="descripcion" class="new-todo" placeholder="Descripcion" [formControl]="InputDescripcion" autofocus ngModel required>
-        <input name="estado" class="new-todo" placeholder="Estado" [formControl]="InputEstado" (keyup.enter)="createEvent()" autofocus ngModel required>    
-    </div>
-    
-    <br><br>
-    
     <div>
-        <button (click)="createEvent()">Crear Evento</button>
+        <input name="nombre" class="new-todo" placeholder="Nombre Evento" [formControl]="InputNombre" autofocus ngModel
+            required>
+       <input name="descripcion" class="new-todo" placeholder="Descripcion" [formControl]="InputDescripcion" autofocus
+            ngModel required>
+        <input name="estado" class="new-todo" placeholder="Estado" [formControl]="InputEstado"
+            (keyup.enter)="createEvent()" autofocus ngModel required>
+    </div>
+
+    <br><br>
+
+    <div>
+        <button (click)="createEvent()" ng-disabled="InputNombre.$invalid || InputDescripcion.$invalid || InputEstado.$invalid ">Crear Evento</button>
     </div>
 
     <br><br><br>
